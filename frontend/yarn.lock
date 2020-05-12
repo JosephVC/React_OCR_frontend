@@ -2056,8 +2056,8 @@ acorn-globals@^4.1.0, acorn-globals@^4.3.0:
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-4.3.4.tgz#9fa1926addc11c97308c4e66d7add0d40c3272e7"
   integrity sha512-clfQEh21R+D0leSbUdWf3OcfqyaCSAQ8Ryq00bofSekfr9W8u1jyYZo6ir0xu9Gtcf7BjcHJpnbZH7JOCpP60A==
   dependencies:
-    acorn "^6.0.1"
-    acorn-walk "^6.0.1"
+    acorn@^7.1.1:
+    version "7.1.1"
 
 acorn-jsx@^5.1.0:
   version "5.1.0"
