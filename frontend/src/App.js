@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
  
 import './App.css';
 
@@ -10,8 +11,16 @@ class App extends Component {
         <p>
             Upload pdf file below to OCR.
             </p>
-        {/* TODO: create form  */}   
-        </header>
+        {/* TODO: create form  */} 
+        <form>
+          <label>
+            Name:
+            <input type="text" name="name" />  
+          </label>  
+          <input type="submit" value="Submit" />
+        </form>  
+    </header>
+
         <body className="App-body"> 
      
         </body >
