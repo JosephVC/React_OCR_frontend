@@ -10,7 +10,14 @@ class App extends Component {
         <p>
             Upload pdf file below to OCR.
             </p>
-        {/* TODO: create form  */}   
+        {/* TODO: create form  */} 
+        <form>
+          <label>
+            Name:
+            <input type="text" name="name" />  
+          </label>
+          <input type="submit" value="Submit" />  
+        </form>  
         </header>
         <body className="App-body"> 
      
