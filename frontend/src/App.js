@@ -23,12 +23,16 @@ class UploadForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <div id="basic_form">
+          <form onSubmit={this.handleSubmit}>
         <label>
           File:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />        </label>
+          <input type="text" value={this.state.value} onChange={this.handleChange} />        
+        </label>
         <input type="submit" value="Submit" />
       </form>
+      </div>
+      
     );
   }
 }
