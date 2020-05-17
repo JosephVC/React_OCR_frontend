@@ -9,18 +9,19 @@ import './App.css';
 class UploadForm extends Component {
   state = {
     title: '',
-    content:'',
-    file: null
+    content: '',
+    image: null
   };
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   };
 
-  handleFileChange = (e) => {
+  handleImageChange = (e) => {
     this.setState({
-      file: e.target.files[0]
+      image: e.target.files[0]
     })
   };
 
@@ -28,7 +29,7 @@ class UploadForm extends Component {
     e.preventDefault();
     console.log(this.state);
     let form_data = new FormData();
-    form_data.append('file', this.state.file, this.state.file.name);
+    form_data.append('image', this.state.image, this.state.image.name);
     form_data.append('title', this.state.title);
     form_data.append('content', this.state.content);
     let url = 'http://localhost:8000/file/upload/';
@@ -56,8 +57,8 @@ class UploadForm extends Component {
           </p>
           <p>
             <input type="file"
-                   id="pdf"
-                   accept="image/png, image/jpeg, .pdf"  onChange={this.handleFileChange} required/>
+                   id="image"
+                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
           </p>
           <input type="submit"/>
         </form>
