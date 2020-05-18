@@ -1,3 +1,3 @@
 # React_OCR_frontend
 
-This repo is set to be the frontend for the overall OCR project.  It will connect to the Django REST backend. 
+This repo is set to be the front end for the overall OCR project.  It will allow the user to upload a pdf which will then be OCR'd by components in the Django back end. 
