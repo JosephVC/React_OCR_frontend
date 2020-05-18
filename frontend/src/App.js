@@ -58,7 +58,7 @@ class UploadForm extends Component {
           <p>
             <input type="file"
                    id="image"
-                   accept="image/png, image/jpeg"  onChange={this.handleImageChange} required/>
+                   accept=".pdf, .doc "  onChange={this.handleImageChange} required/>
           </p>
           <input type="submit"/>
         </form>
