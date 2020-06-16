@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "ocr-app-frontend",
   "description": "The frontend to the apps Django backend.",
   "version": "0.1.0",
   "engines": {
