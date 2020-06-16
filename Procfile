@@ -1,5 +1,4 @@
-web: node src/App.js
-
+web: node index.js
 
 let port = process.env.PORT;
 if (port == null || port == "") {
