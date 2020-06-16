@@ -1,4 +1,4 @@
-web: node src/app.js
+web: node src/App.js
 
 
 let port = process.env.PORT;
