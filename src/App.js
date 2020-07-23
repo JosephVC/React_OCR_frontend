@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Document, Page } from 'react-pdf'
 
 import './App.css';
 
@@ -66,5 +67,7 @@ class UploadForm extends Component {
     );
   }
 }
+
+
 
 export default UploadForm;
