@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/UploadForm';
+// import {DisplayPDF} from './components/pdf-display';
 import * as serviceWorker from './serviceWorker';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <div>
+      <embed src="output.pdf"></embed>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -15,3 +20,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
