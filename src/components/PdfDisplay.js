@@ -1,34 +1,18 @@
-import React, { useState } from 'react';
-import { Document, Page } from 'react-pdf';
+import React, { PureComponent } from 'react';
+import { Document, Page, pdfjs} from 'react-pdf';
 
-// the below is the plain-vanilla way to implement react-pdf,
-// and it doesn't work . . .
-// const DisplayPDF = () => {
-//   const [numPages, setNumPages] = useState(null);
-//   const [pageNumber, setPageNumber] = useState(1);
- 
-//   function onDocumentLoadSuccess({ numPages }) {
-//     setNumPages(numPages);
-//   }
- 
-//   return (
-//     <div>
-//       <Document
-//         file="src\output.pdf"
-//         onLoadSuccess={onDocumentLoadSuccess}
-//       >
-//         <Page pageNumber={pageNumber} />
-//       </Document>
-//       <p>Page {pageNumber} of {numPages}</p>
-//     </div>
-//   );
-// }
+pdfjs.GlobalWorkerOptions.workerSrc = 
+  `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const DisplayPDF = () => {
+const path = './components/static_files/output.pdf';
+
+export default class PdfDisplay extends PureComponent {
+  render () {
     return (
-      <embed src="src\output.pdf" /> 
-
+      <Document file={path}>
+        <Page pageNumber={1} />
+      </Document>
     );
-}
+  }
+ }
 
-export default DisplayPDF;

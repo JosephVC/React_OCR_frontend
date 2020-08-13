@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/UploadForm';
+import App from './App';
 // import {DisplayPDF} from './components/pdf-display';
 import * as serviceWorker from './serviceWorker';
 
@@ -9,9 +9,6 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <div>
-      <embed src="output.pdf"></embed>
-    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
