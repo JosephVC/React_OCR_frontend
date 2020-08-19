@@ -5,9 +5,9 @@ import App from './App';
 // import {DisplayPDF} from './components/pdf-display';
 import * as serviceWorker from './serviceWorker';
 
-
 ReactDOM.render(
   <React.StrictMode>
+    <h1>Online OCR</h1>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
