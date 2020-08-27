@@ -14,7 +14,8 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 // const path = process.env.PUBLIC_URL + '/output.pdf';
 
 // display pdf hosted online without looking at public folder
-const path ='cors-anywhere.herokuapp.com/https://planetpdf.com/planetpdf/pdfs/warnock_camelot.pdf';
+// const path ='cors-anywhere.herokuapp.com/https://planetpdf.com/planetpdf/pdfs/warnock_camelot.pdf';
+const path = "https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/SkienaTheAlgorithmDesignManual.pdf"
 // NOTE: there is a CORS issue with pdf.js blocking this
 
 
