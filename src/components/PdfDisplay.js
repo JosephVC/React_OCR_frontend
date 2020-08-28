@@ -27,7 +27,7 @@ export default class PdfDisplay extends PureComponent {
   render () {
     return (
       <Document file={path}>
-        {/* <Page pageNumber={1} /> */}
+        <Page pageNumber={5} />
       </Document>
 
     );
