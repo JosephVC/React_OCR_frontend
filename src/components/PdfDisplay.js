@@ -18,7 +18,7 @@ pdfjs.GlobalWorkerOptions.workerSrc =
 // NOTE: there is a CORS issue with pdf.js blocking this, thus the 'cors-anywhere' thing
 
 // the below is not blocked by CORS, likely because the bucket is public
-const path = "https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/SkienaTheAlgorithmDesignManual.pdf"
+const path = "https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/test_file_to_ocr.pdf"
 
 
 
@@ -29,7 +29,7 @@ export default class PdfDisplay extends PureComponent {
       <Document file={path}>
         {/* You can set the page number below to anything you want */}
         <Page pageNumber={1} />
-        <a href="https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/SkienaTheAlgorithmDesignManual.pdf">link</a>
+        <a href="https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/test_file_to_ocr.pdf">link</a>
       </Document>
       
 
