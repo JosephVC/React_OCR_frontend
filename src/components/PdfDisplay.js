@@ -27,8 +27,10 @@ export default class PdfDisplay extends PureComponent {
   render () {
     return (
       <Document file={path}>
-        <Page pageNumber={5} />
+        {/* You can set the page number below to anything you want */}
+        <Page pageNumber={1} />
       </Document>
+      <a download="https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/SkienaTheAlgorithmDesignManual.pdf">link</a>
 
     );
   }
