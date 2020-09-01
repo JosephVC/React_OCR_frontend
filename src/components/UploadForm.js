@@ -32,8 +32,8 @@ class UploadForm extends Component {
     form_data.append('file', this.state.file, this.state.file.name);
     form_data.append('title', this.state.title);
     form_data.append('content', this.state.content);
-    // let url = 'https://django-ocr-backend.herokuapp.com/';
-    let url = 'localhost:8000';
+    let url = 'https://django-ocr-backend.herokuapp.com/';
+    // let url = 'localhost:8000';
     axios.post(url, form_data, {
       headers: {
         
