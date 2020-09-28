@@ -3,8 +3,8 @@ import axios from 'axios';
 
 import './App.css';
 
-// Create form
-//    This form does more than a standard one, as it logs when a form was submitted
+// Create the form to upload pdfs
+// This form does more than a standard one, as it logs when a form was submitted
 
 class UploadForm extends Component {
   state = {
@@ -33,7 +33,6 @@ class UploadForm extends Component {
     form_data.append('title', this.state.title);
     form_data.append('content', this.state.content);
     let url = 'https://django-ocr-backend.herokuapp.com/';
-    // let url = 'localhost:8000';
     axios.post(url, form_data, {
       headers: {
         
@@ -59,8 +58,9 @@ class UploadForm extends Component {
           </p>
           <p>
             <input type="file"
-                   id="image"
-                   accept=".pdf, .doc, .txt "  onChange={this.handleFileChange} required/>
+                   id="pdf"
+                   // Note that we only want to accept pdfs
+                   accept=".pdf "  onChange={this.handleFileChange} required/>
           </p>
           <input type="submit"/>
         </form>
