@@ -17,8 +17,6 @@ The front end uses a simple upload form and asks for a simple title and descript
 ### Viewing uploaded files
 The file you upload is OCR'd via the back end, with the resulting file being stored in an S3 bucket. The Django back end keeps a list of each file and its corresponding title and description, with this list being mirrored on the front end.  The latter allows the user to see and download what they've uploaded.  **Future updates** to the front end will allow for greater functionality, such as grid views, visual previews of PDFs, as well as selection and editing of PDFs.
 
----
-
 ## Available Scripts
 
 In the project directory, you can run:
