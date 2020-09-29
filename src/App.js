@@ -1,6 +1,6 @@
 import React, {Component } from 'react';
 import UploadForm from './components/UploadForm';
-import FileGrid from './components/FileList';
+import FileList from './components/FileList';
 
 // Create an App that loads our other components
 class App extends Component {
