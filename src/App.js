@@ -1,6 +1,6 @@
 import React, {Component } from 'react';
 import UploadForm from './components/UploadForm';
-import FileGrid from './components/FileGrid';
+import FileGrid from './components/FileList';
 
 // Create an App that loads our other components
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
         return (
             <div >
                 <UploadForm />
-                <FileGrid />
+                <FileList />
                
                 
             </div>
