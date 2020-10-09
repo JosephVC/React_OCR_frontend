@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-gridlist": "^1.0.1",
+    "react-imgix": "^9.0.2",
     "react-pdf": "^4.2.0",
     "react-scripts": "^3.4.3",
     "yarn": "^1.22.10"

@@ -3,9 +3,6 @@ import { Document, Page, pdfjs} from 'react-pdf';
 
 // try importing pdfjs from pdfjs itself rather than react-pdf
 
-// import 'pdfjs';\
-// this doesn't work
-
 
 pdfjs.GlobalWorkerOptions.workerSrc = 
   `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -35,7 +32,7 @@ export default class PdfDisplay extends PureComponent {
         {/* You can set the page number below to anything you want */}
         <Page pageNumber={1} />
         {/* the below allows the user to download a specific file; works great  */}
-        <a href="https://ocr-backend-bucket.s3.amazonaws.com/static/post_images/test_file_to_ocr.pdf">link</a> 
+        <a href="https://www.orimi.com/pdf-test.pdf">link</a> 
         
       </Document>
       

@@ -1,6 +1,7 @@
 import React, {Component } from 'react';
 import UploadForm from './components/UploadForm';
 import FileList from './components/FileList';
+import Pdfdisplay from './components/PdfDisplay'
 
 // Create an App that loads our other components
 class App extends Component {
@@ -8,7 +9,8 @@ class App extends Component {
         return (
             <div >
                 <UploadForm />
-                <FileList />
+                {/* <FileList /> */}
+                <Pdfdisplay />
                
                 
             </div>
