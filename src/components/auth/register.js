@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { useHistory } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
