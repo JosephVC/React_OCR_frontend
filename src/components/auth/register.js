@@ -57,7 +57,7 @@ export default function SignUp() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`user/register/`, {
+			.post(`user/create/`, {
 				email: formData.email,
 				user_name: formData.username,
 				password: formData.password,

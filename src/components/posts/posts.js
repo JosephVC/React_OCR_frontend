@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
 	cardMedia: {
@@ -47,11 +48,17 @@ const Posts = (props) => {
 							// Enterprise card is full width at sm breakpoint
 							<Grid item key={post.id} xs={12} md={4}>
 								<Card className={classes.card}>
-									<CardMedia
-										className={classes.cardMedia}
-										image="https://source.unsplash.com/random"
-										title="Image title"
-									/>
+									<Link
+										color="textPrimary"
+										href={'post/' + post.slug}
+										className={classes.link}
+									>
+										<CardMedia
+											className={classes.cardMedia}
+											image="https://source.unsplash.com/random"
+											title="Image title"
+										/>
+									</Link>
 									<CardContent className={classes.cardContent}>
 										<Typography
 											gutterBottom
@@ -61,11 +68,11 @@ const Posts = (props) => {
 										>
 											{post.title.substr(0, 50)}...
 										</Typography>
-										{/* <div className={classes.postText}>
+										<div className={classes.postText}>
 											<Typography color="textSecondary">
-												{post.content.substr(0, 60)}...
+												{/* {post.excerpt.substr(0, 40)}... */}
 											</Typography>
-										</div> */}
+										</div>
 									</CardContent>
 								</Card>
 							</Grid>
