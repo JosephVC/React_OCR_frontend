@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '../../axios';
 import { useHistory } from 'react-router-dom';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -34,38 +31,65 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function SignUp() {
+export default function Create() {
+	function slugify(string) {
+		const a =
+			'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
+		const b =
+			'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
+		const p = new RegExp(a.split('').join('|'), 'g');
+
+		return string
+			.toString()
+			.toLowerCase()
+			.replace(/\s+/g, '-') // Replace spaces with -
+			.replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
+			.replace(/&/g, '-and-') // Replace & with 'and'
+			.replace(/[^\w\-]+/g, '') // Remove all non-word characters
+			.replace(/\-\-+/g, '-') // Replace multiple - with single -
+			.replace(/^-+/, '') // Trim - from start of text
+			.replace(/-+$/, ''); // Trim - from end of text
+	}
+
 	const history = useHistory();
 	const initialFormData = Object.freeze({
-		email: '',
-		username: '',
-		password: '',
+		title: '',
+		slug: '',
+		excerpt: '',
+		content: '',
 	});
 
 	const [formData, updateFormData] = useState(initialFormData);
 
 	const handleChange = (e) => {
-		updateFormData({
-			...formData,
-			// Trimming any whitespace
-			[e.target.name]: e.target.value.trim(),
-		});
+		if ([e.target.name] == 'title') {
+			updateFormData({
+				...formData,
+				// Trimming any whitespace
+				[e.target.name]: e.target.value.trim(),
+				['slug']: slugify(e.target.value.trim()),
+			});
+		} else {
+			updateFormData({
+				...formData,
+				// Trimming any whitespace
+				[e.target.name]: e.target.value.trim(),
+			});
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
-
 		axiosInstance
-			.post(`user/register/`, {
-				email: formData.email,
-				user_name: formData.username,
-				password: formData.password,
+			.post(`admin/create/`, {
+				title: formData.title,
+				slug: formData.slug,
+				author: 1,
+				excerpt: formData.excerpt,
+				content: formData.content,
 			})
 			.then((res) => {
-				history.push('/login');
-				console.log(res);
-				console.log(res.data);
+				history.push('/admin/');
 			});
 	};
 
@@ -77,7 +101,7 @@ export default function SignUp() {
 			<div className={classes.paper}>
 				<Avatar className={classes.avatar}></Avatar>
 				<Typography component="h1" variant="h5">
-					Sign up
+					Create New Post
 				</Typography>
 				<form className={classes.form} noValidate>
 					<Grid container spacing={2}>
@@ -86,10 +110,10 @@ export default function SignUp() {
 								variant="outlined"
 								required
 								fullWidth
-								id="email"
-								label="Email Address"
-								name="email"
-								autoComplete="email"
+								id="title"
+								label="Post Title"
+								name="title"
+								autoComplete="title"
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -98,10 +122,25 @@ export default function SignUp() {
 								variant="outlined"
 								required
 								fullWidth
-								id="username"
-								label="Username"
-								name="username"
-								autoComplete="username"
+								id="excerpt"
+								label="Post Excerpt"
+								name="excerpt"
+								autoComplete="excerpt"
+								onChange={handleChange}
+								multiline
+								rows={4}
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="slug"
+								label="slug"
+								name="slug"
+								autoComplete="slug"
+								value={formData.slug}
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -110,18 +149,13 @@ export default function SignUp() {
 								variant="outlined"
 								required
 								fullWidth
-								name="password"
-								label="Password"
-								type="password"
-								id="password"
-								autoComplete="current-password"
+								id="content"
+								label="content"
+								name="content"
+								autoComplete="content"
 								onChange={handleChange}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<FormControlLabel
-								control={<Checkbox value="allowExtraEmails" color="primary" />}
-								label="I want to receive inspiration, marketing promotions and updates via email."
+								multiline
+								rows={4}
 							/>
 						</Grid>
 					</Grid>
@@ -133,15 +167,8 @@ export default function SignUp() {
 						className={classes.submit}
 						onClick={handleSubmit}
 					>
-						Sign Up
+						Create Post
 					</Button>
-					<Grid container justify="flex-end">
-						<Grid item>
-							<Link href="#" variant="body2">
-								Already have an account? Sign in
-							</Link>
-						</Grid>
-					</Grid>
 				</form>
 			</div>
 		</Container>
