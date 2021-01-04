@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import axiosInstance from '../../axios';
+import axiosInstance from '../../axios/login';
 import { useHistory } from 'react-router-dom';
+import GoogleLogin  from 'react-google-login';
+import GoogleSocialAuth from '../../axios/googleLogin';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -55,19 +57,25 @@ export default function SignIn() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`token/`, {
-				email: formData.email,
+			.post('auth/token', {
+				grant_type: 'password',
+				username: formData.email,
 				password: formData.password,
+				client_id: 'zdTMJGNCxVG5Eh0PM6IsDikvhWInZLQQK63hV9W5',
+				client_secret:
+					'wabyaC23HbslVcgvMuzIDqKKeYn9AHCdUHmGZbndoRHcgezk1DPx3vQxgElAr7sW3e8H9Aheaixmx4uVVV3vq8cdceRwWiQzlorJtifz6E8hNqrdRd9NnhWmTnxMNZtn',
 			})
 			.then((res) => {
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
-				axiosInstance.defaults.headers['Authorization'] =
-					'JWT ' + localStorage.getItem('access_token');
+				console.log(res);
+				localStorage.setItem('access_token', res.data.access_token);
+				localStorage.setItem('refresh_token', res.data.refresh_token);
 				history.push('/');
-				//console.log(res);
-				//console.log(res.data);
+				window.location.reload();
 			});
+	};
+
+	const responseGoogle = async (response) => {
+		GoogleSocialAuth(response.accessToken);
 	};
 
 	const classes = useStyles();
@@ -119,6 +127,11 @@ export default function SignIn() {
 					>
 						Sign In
 					</Button>
+					<GoogleLogin
+						appId="307917986361-nmabhdbesnokto3f0tnb200qk3qed7g3.apps.googleusercontent.com"
+						fields="name,email,picture"
+						callback={responseGoogle}
+					/>
 					<Grid container>
 						<Grid item xs>
 							<Link href="#" variant="body2">

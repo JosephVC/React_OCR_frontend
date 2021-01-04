@@ -1,3 +1,4 @@
+  
 import React, { useState } from 'react';
 import axiosInstance from '../../axios';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +11,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -32,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Create() {
+	//https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1
 	function slugify(string) {
 		const a =
 			'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
@@ -50,6 +54,7 @@ export default function Create() {
 			.replace(/^-+/, '') // Trim - from start of text
 			.replace(/-+$/, ''); // Trim - from end of text
 	}
+	//
 
 	const history = useHistory();
 	const initialFormData = Object.freeze({
@@ -59,20 +64,25 @@ export default function Create() {
 		content: '',
 	});
 
-	const [formData, updateFormData] = useState(initialFormData);
+	const [postData, updateFormData] = useState(initialFormData);
+	const [postimage, setPostImage] = useState(null);
 
 	const handleChange = (e) => {
+		if ([e.target.name] == 'image') {
+			setPostImage({
+				image: e.target.files,
+			});
+			console.log(e.target.files);
+		}
 		if ([e.target.name] == 'title') {
 			updateFormData({
-				...formData,
-				// Trimming any whitespace
+				...postData,
 				[e.target.name]: e.target.value.trim(),
 				['slug']: slugify(e.target.value.trim()),
 			});
 		} else {
 			updateFormData({
-				...formData,
-				// Trimming any whitespace
+				...postData,
 				[e.target.name]: e.target.value.trim(),
 			});
 		}
@@ -80,18 +90,35 @@ export default function Create() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axiosInstance
-			.post(`admin/create/`, {
-				title: formData.title,
-				slug: formData.slug,
-				author: 1,
-				excerpt: formData.excerpt,
-				content: formData.content,
-			})
-			.then((res) => {
-				history.push('/admin/');
-			});
+		let formData = new FormData();
+		formData.append('title', postData.title);
+		formData.append('slug', postData.slug);
+		formData.append('author', 1);
+		formData.append('excerpt', postData.excerpt);
+		formData.append('content', postData.content);
+		formData.append('image', postimage.image[0]);
+		axiosInstance.post(`admin/create/`, formData);
+		history.push({
+			pathname: '/admin/',
+		});
+		window.location.reload();
 	};
+
+	// const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+	// const URL = 'http://127.0.0.1:8000/api/admin/creats/';
+	// let formData = new FormData();
+	// formData.append('title', postData.title);
+	// formData.append('slug', postData.slug);
+	// formData.append('author', 1);
+	// formData.append('excerpt', postData.excerpt);
+	// formData.append('content', postData.content);
+	// formData.append('image', postimage.image[0]);
+	// axios
+	// 	.post(URL, formData, config)
+	// 	.then((res) => {
+	// 		console.log(res.data);
+	// 	})
+	// 	.catch((err) => console.log(err));
 
 	const classes = useStyles();
 
@@ -140,7 +167,7 @@ export default function Create() {
 								label="slug"
 								name="slug"
 								autoComplete="slug"
-								value={formData.slug}
+								value={postData.slug}
 								onChange={handleChange}
 							/>
 						</Grid>
@@ -158,6 +185,14 @@ export default function Create() {
 								rows={4}
 							/>
 						</Grid>
+						<input
+							accept="image/*"
+							className={classes.input}
+							id="post-image"
+							onChange={handleChange}
+							name="image"
+							type="file"
+						/>
 					</Grid>
 					<Button
 						type="submit"
