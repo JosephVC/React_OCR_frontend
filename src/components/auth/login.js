@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import axiosInstance from '../../axios';
+import axiosInstance from '../../axios/login';
 import { useHistory } from 'react-router-dom';
+import GoogleLogin  from 'react-google-login';
+import GoogleSocialAuth from '../../axios/googleLogin';
 //MaterialUI
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -55,19 +57,26 @@ export default function SignIn() {
 		console.log(formData);
 
 		axiosInstance
-			.post(`token/`, {
-				email: formData.email,
+			.post('auth/token', {
+				grant_type: 'password',
+				username: formData.email,
 				password: formData.password,
+				client_id: 'I0NIqCe66uALeKFsmnVe57ti92sHBhOqhtml9CQT',
+				client_secret:
+					'yukhwjKzhaWCo3KdxidoDWqkwJsamYS4u62jmgKSJDRL9B3itufHPMSDHyFlvfLVWMm4DSN4ppxteETfwznzBk4Pqk4jmxZzlXejFRd7NARUtCIAJ1PVgjZfnoKnw3E4',
 			})
 			.then((res) => {
-				localStorage.setItem('access_token', res.data.access);
-				localStorage.setItem('refresh_token', res.data.refresh);
-				axiosInstance.defaults.headers['Authorization'] =
-					'JWT ' + localStorage.getItem('access_token');
-				history.push('/');
-				//console.log(res);
-				//console.log(res.data);
+				console.log(res);
+				localStorage.setItem('access_token', res.data.access_token);
+				localStorage.setItem('refresh_token', res.data.refresh_token);
+				// history.push('/');
+				// window.location.reload();
 			});
+	};
+
+	const responseGoogle = (response) => {
+		console.log(response);
+		GoogleSocialAuth(response.access_token);
 	};
 
 	const classes = useStyles();
@@ -119,6 +128,14 @@ export default function SignIn() {
 					>
 						Sign In
 					</Button>
+					<GoogleLogin
+						clientId="307917986361-nmabhdbesnokto3f0tnb200qk3qed7g3.apps.googleusercontent.com"
+						buttonText="Google Login"
+      					onSuccess={responseGoogle}
+    					onFailure={responseGoogle}
+						cookiePolicy={'single_host_origin'}
+					/>
+					
 					<Grid container>
 						<Grid item xs>
 							<Link href="#" variant="body2">
