@@ -61,21 +61,22 @@ export default function SignIn() {
 				grant_type: 'password',
 				username: formData.email,
 				password: formData.password,
-				client_id: 'zdTMJGNCxVG5Eh0PM6IsDikvhWInZLQQK63hV9W5',
+				client_id: 'I0NIqCe66uALeKFsmnVe57ti92sHBhOqhtml9CQT',
 				client_secret:
-					'wabyaC23HbslVcgvMuzIDqKKeYn9AHCdUHmGZbndoRHcgezk1DPx3vQxgElAr7sW3e8H9Aheaixmx4uVVV3vq8cdceRwWiQzlorJtifz6E8hNqrdRd9NnhWmTnxMNZtn',
+					'yukhwjKzhaWCo3KdxidoDWqkwJsamYS4u62jmgKSJDRL9B3itufHPMSDHyFlvfLVWMm4DSN4ppxteETfwznzBk4Pqk4jmxZzlXejFRd7NARUtCIAJ1PVgjZfnoKnw3E4',
 			})
 			.then((res) => {
 				console.log(res);
 				localStorage.setItem('access_token', res.data.access_token);
 				localStorage.setItem('refresh_token', res.data.refresh_token);
-				history.push('/');
-				window.location.reload();
+				// history.push('/');
+				// window.location.reload();
 			});
 	};
 
-	const responseGoogle = async (response) => {
-		GoogleSocialAuth(response.accessToken);
+	const responseGoogle = (response) => {
+		console.log(response);
+		GoogleSocialAuth(response.access_token);
 	};
 
 	const classes = useStyles();
@@ -128,10 +129,13 @@ export default function SignIn() {
 						Sign In
 					</Button>
 					<GoogleLogin
-						appId="307917986361-nmabhdbesnokto3f0tnb200qk3qed7g3.apps.googleusercontent.com"
-						fields="name,email,picture"
-						callback={responseGoogle}
+						clientId="307917986361-nmabhdbesnokto3f0tnb200qk3qed7g3.apps.googleusercontent.com"
+						buttonText="Google Login"
+      					onSuccess={responseGoogle}
+    					onFailure={responseGoogle}
+						cookiePolicy={'single_host_origin'}
 					/>
+					
 					<Grid container>
 						<Grid item xs>
 							<Link href="#" variant="body2">
