@@ -1,6 +1,8 @@
 import axios from 'axios';
-
-const baseURL = 'http://127.0.0.1:8000/api/';
+// the below is the baseURL for development
+// const baseURL = 'http://127.0.0.1:8000/api/';
+//the below is the baseURL for production
+const baseURL = 'https://django-ocr-backend.herokuapp.com/';
 
 const axiosInstance = axios.create({
 	baseURL: baseURL,

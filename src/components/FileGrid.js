@@ -5,6 +5,7 @@ const files = Array.from({length:50}, (_, i) => {
     let width = 300
     let height = Math.floor(Math.random() * 300) + 200;
     return {
+      // the below line is for production; change back to 127.0.0.1:8000 for dev
       url: `https://django-ocr-backend.herokuapp.com//${width}/${height}.pdf`,
       width,
       height,
