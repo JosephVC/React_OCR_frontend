@@ -5,7 +5,7 @@ This repo is set to be the front end for the overall OCR project.  It will allow
 ## Works in progress
  - The first page of a given pdf ought to be viewed as a thumbnail when a user logs in to see their (and only their) respective posts.  
  - Upon clicking the thumbnail, the user ought to be taken to the a page showing that particular pdf.  Eventually, there will be ways to delete the post as well as edit the title and description of the post.  Future plans include the ability to rotate and otherwise alter the particular pdf.
- - When logged in, the user out to see their particular pdfs along with a noticable "Upload" field where they can either drag & drop pdfs or upload via an "Upload" button. Right now this functionality is on an alternate /admin/ page where it need not belong.
+ - When logged in, the user should see their particular pdfs along with a noticable "Upload" field where they can either drag & drop pdfs or upload via an "Upload" button. Right now this functionality is on an alternate /admin/ page where it need not belong.
 
 ## Follow the Tutorial
 
