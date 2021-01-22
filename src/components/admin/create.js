@@ -170,7 +170,7 @@ export default function Create() {
 							/>
 						</Grid>
 						<input
-							accept="image/*"
+							accept="application/pdf"
 							className={classes.input}
 							id="post-image"
 							onChange={handleChange}
