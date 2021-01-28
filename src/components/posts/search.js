@@ -85,7 +85,7 @@ const Search = () => {
 										</Typography>
 										<div className={classes.postText}>
 											<Typography color="textSecondary">
-												{post.excerpt.substr(0, 40)}...
+												{/* {post.excerpt.substr(0, 40)}... */}
 											</Typography>
 										</div>
 									</CardContent>

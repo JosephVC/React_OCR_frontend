@@ -9,9 +9,9 @@ class FileList extends Component {
         try {
             // fetch the data from the api
             // local dev url
-            // const res = await fetch('http://127.0.0.1:8000/');
+            const res = await fetch('http://127.0.0.1:8000/');
             // heroku-based backend production url
-            const res = await fetch('https://django-ocr-backend.herokuapp.com/')
+            // const res = await fetch('https://django-ocr-backend.herokuapp.com/')
             const fileList = await res.json();
             this.setState({
                 fileList

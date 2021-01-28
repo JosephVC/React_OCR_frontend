@@ -34,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Create() {
-	// article on using slugify:
-	// https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1
+	//https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1
 	function slugify(string) {
 		const a =
 			'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
@@ -97,12 +96,28 @@ export default function Create() {
 		formData.append('excerpt', postData.excerpt);
 		formData.append('content', postData.content);
 		formData.append('image', postimage.image[0]);
-		axiosInstance.post('admin/create/', formData);
+		axiosInstance.post(`admin/create/`, formData);
 		history.push({
 			pathname: '/admin/',
 		});
 		window.location.reload();
 	};
+
+	// const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+	// const URL = 'http://127.0.0.1:8000/api/admin/creats/';
+	// let formData = new FormData();
+	// formData.append('title', postData.title);
+	// formData.append('slug', postData.slug);
+	// formData.append('author', 1);
+	// formData.append('excerpt', postData.excerpt);
+	// formData.append('content', postData.content);
+	// formData.append('image', postimage.image[0]);
+	// axios
+	// 	.post(URL, formData, config)
+	// 	.then((res) => {
+	// 		console.log(res.data);
+	// 	})
+	// 	.catch((err) => console.log(err));
 
 	const classes = useStyles();
 
@@ -170,18 +185,13 @@ export default function Create() {
 							/>
 						</Grid>
 						<input
-							accept="application/pdf"
+							accept="image/*"
 							className={classes.input}
 							id="post-image"
 							onChange={handleChange}
 							name="image"
 							type="file"
 						/>
-                        <label htmlFore="post-image">
-                            <IconButton color='primary' component='span'>
-                                <PhotoCamera />
-                            </IconButton>
-                        </label>
 					</Grid>
 					<Button
 						type="submit"

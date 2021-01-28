@@ -67,7 +67,7 @@ export default function Create() {
 		axiosInstance.put(`admin/edit/` + id + '/', {
 			title: formData.title,
 			slug: formData.slug,
-			author: 1,
+			owner: 1,
 			excerpt: formData.excerpt,
 			content: formData.content,
 		});
