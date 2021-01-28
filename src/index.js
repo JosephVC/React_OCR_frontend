@@ -23,7 +23,7 @@ const routing = (
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route exact path="/admin" component={Admin} />
-				<Route exact path="/admin/create" component={Create} />
+				<Route exact path="/admin/Create" component={Create} />
 				<Route exact path="/admin/edit/:id" component={Edit} />
 				<Route exact path="/admin/delete/:id" component={Delete} />
 				<Route path="/register" component={Register} />

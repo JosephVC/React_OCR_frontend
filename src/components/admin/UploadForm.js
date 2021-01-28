@@ -1,7 +1,17 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-
-import './App.css';
+import React, { useState } from 'react';
+import axiosInstance from '../../axios';
+import { useHistory } from 'react-router-dom';
+//MaterialUI
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 // Create the form to upload pdfs
 // This form does more than a standard one, as it logs when a form was submitted

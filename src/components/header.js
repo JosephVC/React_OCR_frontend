@@ -77,6 +77,16 @@ function Header() {
 							Register
 						</Link>
 					</nav>
+					<Button 
+						href="#"
+						color="primary"
+						variant="outlined"
+						className={classes.link}
+						component={NavLink}
+						to="/admin"
+						>
+						Exec Panel (login required)
+						</Button>
 					<Button
 						href="#"
 						color="primary"
