@@ -5,9 +5,9 @@ const GoogleSocialAuth = (accesstoken) => {
 	console.log(accesstoken);
 	axios
 		// uncomment the below line for local development, comment out when deploying app
-		.post('http://127.0.0.1:8000/auth/convert-token', {
+		// .post('http://127.0.0.1:8000/auth/convert-token', {
 		// use the below line for when the app is deployed
-		// .post('https://django-ocr-backend.herokuapp.com/auth/convert-token', {
+		.post('https://django-ocr-backend.herokuapp.com/auth/convert-token', {
 			token: accesstoken,
 			backend: 'google',
 			grant_type: 'convert_token',
