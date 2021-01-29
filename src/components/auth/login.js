@@ -130,13 +130,13 @@ export default function SignIn() {
 					>
 						Sign In
 					</Button>
-					<GoogleLogin
+					{/* <GoogleLogin
 						clientId="307917986361-nmabhdbesnokto3f0tnb200qk3qed7g3.apps.googleusercontent.com"
 						buttonText="Google Login"
       					onSuccess={responseGoogle}
     					onFailure={responseGoogle}
 						cookiePolicy={'single_host_origin'}
-					/>
+					/> */}
 					
 					<Grid container>
 						<Grid item xs>
