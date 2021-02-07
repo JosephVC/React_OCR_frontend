@@ -64,11 +64,11 @@ export default function Create() {
 	});
 
 	const [postData, updateFormData] = useState(initialFormData);
-	const [postimage, setPostImage] = useState(null);
+	const [postfile, setPostFile] = useState(null);
 
 	const handleChange = (e) => {
 		if ([e.target.name] == 'image') {
-			setPostImage({
+			setPostFile({
 				image: e.target.files,
 			});
 			console.log(e.target.files);
@@ -95,7 +95,7 @@ export default function Create() {
 		formData.append('owner', 1);
 		formData.append('excerpt', postData.excerpt);
 		formData.append('content', postData.content);
-		formData.append('image', postimage.image[0]);
+		formData.append('pdf', postfile.image[0]);
 		axiosInstance.post(`admin/create/`, formData);
 		history.push({
 			pathname: '/admin/',
@@ -170,11 +170,11 @@ export default function Create() {
 							/>
 						</Grid>
 						<input
-							accept="image/*"
+							accept="application/pdf"
 							className={classes.input}
 							id="post-image"
 							onChange={handleChange}
-							name="image"
+							name="pdf"
 							type="file"
 						/>
 					</Grid>
