@@ -65,11 +65,12 @@ export default function Create() {
 
 	const [postData, updateFormData] = useState(initialFormData);
 	const [postfile, setPostFile] = useState(null);
+	
 
 	const handleChange = (e) => {
-		if ([e.target.name] == 'image') {
+		if ([e.target.name] == 'pdf') {
 			setPostFile({
-				image: e.target.files,
+				file: e.target.files,
 			});
 			console.log(e.target.files);
 		}
@@ -90,13 +91,16 @@ export default function Create() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		let formData = new FormData();
+		
 		formData.append('title', postData.title);
 		formData.append('slug', postData.slug);
 		formData.append('owner', 1);
 		formData.append('excerpt', postData.excerpt);
 		formData.append('content', postData.content);
-		formData.append('pdf', postfile.image[0]);
+		formData.append('pdf', postfile.file[0]);
+		
 		axiosInstance.post(`admin/create/`, formData);
+		
 		history.push({
 			pathname: '/admin/',
 		});
