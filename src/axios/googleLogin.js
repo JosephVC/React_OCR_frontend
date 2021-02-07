@@ -12,10 +12,10 @@ const GoogleSocialAuth = (accesstoken) => {
 			backend: 'google',
 			grant_type: 'convert_token',
 			// this is the client id of your Django application
-			client_id: 't7E9vAqhehh5GXbuOjvTZXzBuEOljNgn9cJksobb',
+			client_id: 'ulIMl0Ms2LnEEPNolZXnLB3HwziPbEIFRwMDlN2x',
 			// same with the client secret
 			client_secret:
-				'NwJM5jH3ZWMwsUs6stWdEpYCfR8U52MnWmmerMBcJfZwpbOSFz4bVPdNyh9Vq9kje8f8NEFqj1M1SDxG7oMKuR5P6cRWcBMVwdW2QQkScG1qghZy6cE0SCETqyJVbrL3',
+				'ghFnD3lvWejHiPZRNUV3fbMh5PG94CR2Fc6ukhGPyQaRrqNbbhKIR0MVTrxy40Y6Xcowg5pm6r4Ubm2xr6VZenJyuUpdemiFAgQl7PTsWaYb7OusG7HFO6kuMn0CLMUr',
 		})
 		.then((res) => {
 			localStorage.setItem('access_token', res.data.access_token);
