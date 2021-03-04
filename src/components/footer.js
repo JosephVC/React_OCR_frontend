@@ -42,7 +42,7 @@ function Copyright() {
 const footers = [
 	{
 		title: 'Terms of use',
-		description: ["No Adult Content, please.  Be cool."]  
+		description: ["Be cool."]  
 	},
 ];
 
