@@ -56,7 +56,7 @@ function Header() {
 							underline="none"
 							color="textPrimary"
 						>
-							Blog
+							Home
 						</Link>
 					</Typography>
 

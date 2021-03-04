@@ -31,7 +31,7 @@ function Copyright() {
 		<Typography variant="body2" color="textSecondary" align="center">
 			{'Copyright © '}
 			<Link color="inherit" href="https://material-ui.com/">
-				Your Website
+				Joseph Cardenas
 			</Link>{' '}
 			{new Date().getFullYear()}
 			{'.'}
@@ -42,7 +42,7 @@ function Copyright() {
 const footers = [
 	{
 		title: 'Terms of use',
-		description: ['Terms of use'],
+		description: ["No Adult Content, please.  Be cool."]  
 	},
 ];
 

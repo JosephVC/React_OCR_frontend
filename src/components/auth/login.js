@@ -57,15 +57,15 @@ export default function SignIn() {
 		console.log(formData);
 
 		axiosInstance
-			.post('auth/token', {
+			.post(`auth/token`, {
 				grant_type: 'password',
 				username: formData.email,
 				password: formData.password,
 				// this is the client id in your respective Django
-				client_id: 't7E9vAqhehh5GXbuOjvTZXzBuEOljNgn9cJksobb',
+				client_id: 'ulIMl0Ms2LnEEPNolZXnLB3HwziPbEIFRwMDlN2x',
 				// same with the client secret
 				client_secret:
-					'NwJM5jH3ZWMwsUs6stWdEpYCfR8U52MnWmmerMBcJfZwpbOSFz4bVPdNyh9Vq9kje8f8NEFqj1M1SDxG7oMKuR5P6cRWcBMVwdW2QQkScG1qghZy6cE0SCETqyJVbrL3',
+					'ghFnD3lvWejHiPZRNUV3fbMh5PG94CR2Fc6ukhGPyQaRrqNbbhKIR0MVTrxy40Y6Xcowg5pm6r4Ubm2xr6VZenJyuUpdemiFAgQl7PTsWaYb7OusG7HFO6kuMn0CLMUr',
 			})
 			.then((res) => {
 				console.log(res);
@@ -144,11 +144,7 @@ export default function SignIn() {
 								Forgot password?
 							</Link>
 						</Grid>
-						<Grid item>
-							<Link href="#" variant="body2">
-								{"Don't have an account? Sign Up"}
-							</Link>
-						</Grid>
+						
 					</Grid>
 				</form>
 			</div>
