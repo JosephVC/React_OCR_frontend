@@ -2,6 +2,12 @@
 
 This repo is set to be the front end for the overall OCR project.  It will allow the user to upload a pdf which will then be OCR'd by components in the Django back end.  This front end inially was to be a simple upload form.  The front end now includes a revised design, login/logout functionality which limits who can upload and see posts.  
 
+## Current Status
+For security purposes, you'll need to be logged in to see actual posts.  If you don't have time to register and log in, below is an example of what the front end looks like:
+
+![image](https://user-images.githubusercontent.com/15116454/110022963-6b066880-7ce1-11eb-9744-9a8961872525.png)
+
+
 ## Works in progress
  - The first page of a given pdf ought to be viewed as a thumbnail when a user logs in to see their (and only their) respective posts.  
  - Upon clicking the thumbnail, the user ought to be taken to the a page showing that particular pdf.  Eventually, there will be ways to delete the post as well as edit the title and description of the post.  Future plans include the ability to rotate and otherwise alter the particular pdf.
